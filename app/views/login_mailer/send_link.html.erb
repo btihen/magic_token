@@ -1,0 +1,7 @@
+<h1>Hi <%= @user.email %>,</h1>
+
+<p><a href="<%= @login_url %>">Access-Link for <%= @host %></a></p>
+
+<p> <%= @login_url %> </p>
+
+<p>Link is valid for about an hour from <%= DateTime.now %></p>
