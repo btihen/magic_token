@@ -1,2 +1,19 @@
-<h1>Logins#new</h1>
-<p>Find me in app/views/logins/new.html.erb</p>
+<%= form_for(user, local: true,
+             url: logins_path,  # NEW MUST BE PLURAL for POST
+             id: "login-form", class: "user" ) do |form|  %>
+
+  <div class="field">
+    <label class="label">Email for Access-Link</label>
+    <div class="control">
+      <%= form.email_field :email,
+                            placeholder: "Email",
+                            class: 'input' %>
+    </div>
+    <p class="help"></p>
+  </div>
+
+  <div class="control">
+    <%= form.submit("Get Access-Link", class: "button is-success") %>
+  </div>
+
+<% end %>

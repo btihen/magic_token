@@ -9,15 +9,20 @@ class LoginsController < ApplicationController
 
   def create
     email = user_params[:email]
-    ip_address = request.remote_ip
-    # the participant might already exist in our db or possimagic_link_url = participants_session_auth_url(token: participant.login_token)bly a new participant
-    user = User.find_by(email: email)
-    token = SecureRandom.hex(100)
-    token_expires_at = DateTime.new + 1.hour
 
-    if user && user.update_attributes(token: token, token_expires_at: token_expires_at)
+    # we may or may not find a user
+    user = User.find_by(email: email)
+
+    # always take the time to calculate token info (discourages email fishing)
+    token = SecureRandom.hex(50)
+    # besure to use NOW and not NEW!
+    token_expires_at = DateTime.now + 1.hour
+    token_params = {token: token, token_expires_at: token_expires_at}
+
+    # if we have a user and the update is successful
+    if user && user.update(token_params)
       access_url = create_session_url(token: user.token)
-      LinkMailer.send_link(user, access_url).deliver_later
+      LoginMailer.send_link(user, access_url).deliver_later
     end
 
     # # uncomment to add noise to discourage response time monitoring
