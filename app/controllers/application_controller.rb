@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :users_only
 
   def current_user
-    # `try` and `find_by` avoid raising an exception w/o a session
-    user_id = session.try(:user_id)
+    # `dig` and `find_by` avoid raising an exception w/o a session
+    user_id = session.dig(:user_id)
     @current_user ||= User.find_by(id: user_id)
   end
 
