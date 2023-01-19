@@ -63,15 +63,15 @@ GEM
     bootsnap (1.9.1)
       msgpack (~> 1.0)
     builder (3.2.4)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     debug (1.1.0)
       irb
       reline (>= 0.2.7)
     erubi (1.10.0)
-    globalid (0.5.2)
+    globalid (1.0.1)
       activesupport (>= 5.0)
-    i18n (1.8.10)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (0.7.3)
       rails (>= 6.0.0)
@@ -88,10 +88,12 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.1)
-    minitest (5.14.4)
+    minitest (5.17.0)
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.4-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     puma (5.5.0)
@@ -143,7 +145,7 @@ GEM
     thor (1.1.0)
     turbo-rails (0.7.14)
       rails (>= 6.0.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     web-console (4.1.0)
       actionview (>= 6.0.0)
@@ -157,6 +159,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
